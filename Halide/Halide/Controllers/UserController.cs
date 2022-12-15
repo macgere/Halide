@@ -22,6 +22,16 @@ namespace Halide.Controllers
             return _userRepo.GetUserById(id);
         }
 
+        [HttpGet("loggingInBy/email")]
+        public int Get(string email, string password)
+        {
+           var response = _userRepo.GetUserByEmailAndPassword(email, password);
+/*            if (response == null) {
+                return NotFound();
+            }*/
+            return response;
+        }
+
         [HttpGet("reviewsBy/{id}")]
         public List<Review> GetReviewsByUserId(int id)
         {

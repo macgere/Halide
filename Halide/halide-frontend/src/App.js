@@ -1,26 +1,36 @@
 import { useState } from 'react';
+import SignIn from './SignIn.js';
+import SignUp from './SignUp.js';
+import Timeline from './Timeline.js';
+import Navbar from './Navbar.js';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import UserProfile from './UserProfile.js';
+import Review from './Review.js'
 
 function App() {
 
-const [reviews, setReviews] = useState([])
-
-const getReviews = () => {
-  fetch('https://localhost:7245/api/Review')
-  .then((response) => response.json())
-  .then((response) => setReviews(response))
-}
+  const [userId, setUserId] = useState(0)
+  const [reviewBeingRead, setReviewBeingRead] = useState(0)
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome To Halide</h1>
-        <button className='signIn'>Sign In</button>
-        <button className='signUp'>Sign Up</button>
-        <button className='test' onClick={() => getReviews()}>See The Timeline</button>
-        <div className='reviews'>
-          {reviews.map((review) => <div key={review.id}>{review.filmTitle}</div>)}
-        </div>
+      <Router>
+        <Navbar userId={userId} setUserId={setUserId} />
+          <Routes>
+            <Route path="/" element={<SignIn setUserId={setUserId} />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route exact path="/home" element={<Timeline userId={userId} setReviewBeingRead={setReviewBeingRead}/>} />
+            <Route path="/userProfile" element={<UserProfile userId={userId} />} />
+            <Route path="/review" element={<Review reviewBeingRead={reviewBeingRead} userId={userId}/>} />
+          </Routes>
+        </Router>
       </header>
     </div>
   );

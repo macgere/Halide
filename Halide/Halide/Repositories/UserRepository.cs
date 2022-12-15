@@ -58,6 +58,47 @@ namespace Halide.Repositories
                 }
             }
         }
+
+        public int GetUserByEmailAndPassword(string email, string password)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                                SELECT *
+                                FROM [user]
+                                WHERE email = @email
+                                AND password = @password
+                            ";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        if (reader.Read())
+                        {
+                            /*User user = new User()
+                            {*/
+                            return reader.GetInt32(reader.GetOrdinal("id"));
+/*                                name = reader.GetString(reader.GetOrdinal("name")),
+                                email = reader.GetString(reader.GetOrdinal("email")),
+                                password = reader.GetString(reader.GetOrdinal("password")),
+                                imageUrl = reader.GetString(reader.GetOrdinal("imageUrl"))*/
+/*                            };*/
+/*
+                            return user;*/
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
         public List<Review> GetReviewsByUserId(int id)
         {
             using (SqlConnection conn = Connection)
