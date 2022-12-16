@@ -19,9 +19,12 @@ const Review = ({reviewBeingRead}) => {
 
     useEffect( () => {
         getFullReview()
-        reviewAuthor()    
-        getComments()
     }, [])
+
+    useEffect( () => {
+        reviewAuthor()
+        .then(() => getComments())
+    }, [fullReview])
      
     const getFullReview = async() => {
         return await fetch(`https://localhost:7245/api/Review/${reviewBeingRead}`)
@@ -60,13 +63,14 @@ const Review = ({reviewBeingRead}) => {
 
 return (
     <>
-    <Link to='/home'>Back to Timeline</Link>
     <div className='fullReview'>
-        <h1>{fullReview.filmTitle}</h1>
-        <p>{fullReview.filmRating}/10</p>
-        <p>{fullReview.reviewBody}</p>
-        <p>{fullReview.dateTime}</p>
-        <p>{author.name}</p>
+            <div className='titleAndRating'>
+                <h1>{fullReview.filmTitle}</h1>
+                <h1>{fullReview.filmRating}/10</h1>
+            </div>
+            <p>{fullReview.reviewBody}</p>
+            <p>{fullReview.dateTime}</p>
+            <p>{author.name}</p>
     </div>
     <div className='fullReviewComments'>
         {comments.map((comment) =>

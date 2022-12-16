@@ -4,6 +4,7 @@ import {
     useLocation,
     Link
 } from 'react-router-dom'
+import SubmitReview from './SubmitReview';
 import './App.css';
 
 function UserProfile({userId}) {
@@ -27,16 +28,23 @@ useEffect(() => {
     return (
         <div className="userProfile">
             <header>
+                <div className='timelineUser'>
                 <h1>{user.name}</h1>
                 <h2>{user.email}</h2>
                 <img className='profilePic' src={user.imageUrl} />
-                <Link to="/home">Back to Timeline</Link>
-                <div className='yourReviews'>
+                </div>
+                <div className='reviewSubmit'>
+                    <SubmitReview userId={userId} />
+                </div>
+                <div>
                     <h1>Your Reviews:</h1>
                     {reviews.map((review) =>
-                        <div key={review.id}>
-                            <h2 className='filmTitle'>{review.filmTitle}</h2>
-                            <h3 className='filmRating'>{review.filmRating}</h3>
+                        
+                        <div className='fullReview' key={review.id}>
+                            <div className='titleAndRating'>
+                                <h1 className='filmTitle'>{review.filmTitle}</h1>
+                                <h1 className='filmRating'>{review.filmRating}</h1>
+                            </div>
                             <p className='reviewBody'>{review.reviewBody}</p>
                             <p className='dateTime'>{review.dateTime}</p>
                         </div>

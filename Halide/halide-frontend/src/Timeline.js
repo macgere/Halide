@@ -32,9 +32,9 @@ useEffect(() => {
         getReviews()
 }, [])
 
-const navigateToUserProfile = () => {
-    navigate('/userProfile')
-}
+// const navigateToUserProfile = () => {
+//     navigate('/userProfile')
+// }
 
 // let id = review.id
 
@@ -47,26 +47,29 @@ const navigateToReview= (id) => {
       <div className="App">
           <header className="App-header">
               <h1>Halide</h1>
-              <button className='navbarButton' onClick={() => navigateToUserProfile()}>Your Profile</button>
+              {/* <button className='navbarButton' onClick={() => navigateToUserProfile()}>Your Profile</button> */}
               {/* <UserBasic user={user} /> */}
-              <div className="userProfile">
+              <div className="timelineUser">
                       <p>{user.name}</p>
                       <img className='profilePic' src={user.imageUrl} />
               </div>
               <div className='reviewSubmit'>
                 <SubmitReview userId={userId} />
               </div>
-              <div className='reviews'>
+              
                 <h2>Reviews By Halide Community:</h2>
-                  {reviews.map((review) =>
+              {reviews.map((review) =>
+                  <div className='reviews'>
                       <div key={review.id}>
-                          <h2 className='filmTitle'>{review.filmTitle}</h2>
-                          <h3 className='filmRating'>{review.filmRating}</h3>
+                          <div className='titleAndRating'>
+                              <h1 className='filmTitle'>{review.filmTitle}</h1>
+                              <h1 className='filmRating'>{review.filmRating}</h1>
+                          </div>
                           <p className='dateTime'>{review.dateTime}</p>
-                          <button className='navbarButton' onClick={() => navigateToReview(review.id)}>SeeFullReview</button> 
+                          <button className='navbarButton' onClick={() => navigateToReview(review.id)}>SeeFullReview</button>
                       </div>
-                  )}
-              </div>
+                  </div>
+              )}
           </header>
       </div>
   );

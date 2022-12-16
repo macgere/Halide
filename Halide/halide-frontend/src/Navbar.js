@@ -17,6 +17,30 @@ const signInSignOutText = () => {
     }
 }    
 
+const dynamicTimeline = () => {
+    if (userId == 0) {
+        return ""
+    } else {
+        return <Link to='/home' className='navbarButton'>Timeline</Link> 
+    }
+}
+
+const dynamicUserProfile = () => {
+    if (userId == 0) {
+        return ""
+    } else {
+        return <Link to='/userProfile' className='navbarButton'>User Profile</Link> 
+    }
+}
+
+const dynamicSignUp = () => {
+    if (userId == 0) {
+        return <Link to='/signUp' className='navbarButton'>Sign Up</Link>
+    } else {
+        return "" 
+    }
+}
+
 const resetUser = () => {
     setUserId(0)
 }
@@ -25,8 +49,9 @@ return(
     <>
     <div className='navbar'>
     <Link to="/" className="navbarButton" onClick={() => resetUser()}>{signInSignOutText()}</Link>
-    <Link to='/signUp' className='navbarButton'>Sign Up</Link>
-    <Link to='/userProfile' className='navbarButton'>User Profile</Link>
+    {dynamicSignUp()}
+    {dynamicUserProfile()}
+    {dynamicTimeline()}
     </div>
     </>
 )

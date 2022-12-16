@@ -36,7 +36,7 @@ const SubmitReview = ({userId}) => {
   }
 
   return (
-      <div className='reviewSubmit'>
+    <div className='reviewSubmit'>
       <h2>Submit a New Review:</h2>
       <ul>
         <li>
@@ -45,7 +45,7 @@ const SubmitReview = ({userId}) => {
         </li>
         <li>
           <p>Film Rating</p>
-          <input type="number" min="1" max="10" onChange={(event) => setNewReviewRating(event.target.value)}/>
+          <input type="number" min="1" max="10" onChange={(event) => setNewReviewRating(event.target.value)} />
         </li>
         <li>
           <p>Your Review</p>

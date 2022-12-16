@@ -1,7 +1,97 @@
-/* .App {
-  text-align: center;
+html {
+  background-image: linear-gradient(to right, #5f5059, #715d6f, #7f6b88, #887ba3, #8c8dc0, #8c8dc0, #8c8dc0, #8c8dc0, #887ba3, #7f6b88, #715d6f, #5f5059);
 }
 
+.App {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font: 'Roboto';
+  background-size: auto;
+}
+
+.timelineUser {
+  flex-direction: row;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  border-radius: 5px;
+  border: none;
+  background-color: azure;
+  font: 'Roboto';
+  font-kerning: auto;
+}
+
+.navbarButton {
+  border-radius: 5px;
+  border: none;
+  background-color: azure;
+  font: 'Roboto';
+  margin: 15px;
+  padding: 10px;
+}
+
+img {
+  width: 250px;
+  height: 250px;
+  border-radius: 45px;
+}
+
+.filmRating {
+  align-items: right;
+}
+
+form {
+  background-color: rgb(41, 128, 128);
+  margin: 25px;
+  padding: 25px;
+}
+
+.reviews {
+  background-color:  rgb(147, 239, 239);
+  border-radius: 25px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.fullReview {
+  margin: 50px;
+  padding: 50px;
+  background-color: rgb(147, 239, 239);
+  border-radius: 15px;
+}
+
+.titleAndRating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h1 + h1 {
+  margin-left: 40px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.reviewSubmit {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
