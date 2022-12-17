@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
-const SubmitReview = ({userId}) => {
+const SubmitReview = ({userId, getReviews}) => {
    const [newReviewTitle, setNewReviewTitle] = useState('')
    const [newReviewRating, setNewReviewRating] = useState(0)
    const [newReviewBody, setNewReviewBody] = useState('')
@@ -16,23 +16,25 @@ const SubmitReview = ({userId}) => {
 
    let commentDate = Date().toString()
 
-  const submitNewReview = () => {
 
+  const submitNewReview = (e) => {
+    let testObject = {
+      filmTitle: newReviewTitle,
+      filmRating: newReviewRating,
+      reviewBody: newReviewBody,
+      dateTime: commentDate,
+      userId: user
+     }
+    e.preventDefault()
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        filmTitle: newReviewTitle,
-        filmRating: newReviewRating,
-        reviewBody: newReviewBody,
-        dateTime: commentDate,
-        userId: user
-      })
+      body: JSON.stringify(testObject)
     }
 
-    fetch('https://localhost:7245/api/Review/newReview', requestOptions)
+    fetch(`https://localhost:7245/api/Review/newReview/`, requestOptions)
       .then(response => response.json())
-      .then((response) => setReviews(...reviews, response))
+      .then(getReviews())
   }
 
   return (
@@ -52,7 +54,7 @@ const SubmitReview = ({userId}) => {
           <input className='reviewBody' type="text" onChange={(e) => setNewReviewBody(e.target.value)} />
         </li>
       </ul>
-      <button onClick={() => submitNewReview()}>SubmitReview</button>
+      <button onClick={(e) => submitNewReview(e)}>SubmitReview</button>
     </div>
       )
 }

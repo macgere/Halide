@@ -25,6 +25,12 @@ useEffect(() => {
         getReviewsByUserId(userId)    
 }, [])
 
+const deleteReview = (id) => {
+    fetch(`https://localhost:7245/api/Review/${id}`, { method: 'DELETE' })
+        .then(() => getReviews());
+}
+
+
     return (
         <div className="userProfile">
             <header>
@@ -47,6 +53,7 @@ useEffect(() => {
                             </div>
                             <p className='reviewBody'>{review.reviewBody}</p>
                             <p className='dateTime'>{review.dateTime}</p>
+                            <button className='navbarButton' onClick={() => deleteReview(review.id)}>Delete Your Review</button>
                         </div>
                     )}
                 </div>

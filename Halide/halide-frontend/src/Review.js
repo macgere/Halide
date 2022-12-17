@@ -25,7 +25,7 @@ const Review = ({reviewBeingRead}) => {
         reviewAuthor()
         .then(() => getComments())
     }, [fullReview])
-     
+
     const getFullReview = async() => {
         return await fetch(`https://localhost:7245/api/Review/${reviewBeingRead}`)
         .then((response) => response.json())
@@ -77,6 +77,7 @@ return (
             <div key={comment.id}>
                 <h2 className='commentBody'>{comment.commentBody}</h2>
                 <h3 className='commentDate'>{comment.dateTime}</h3>
+                <h3 className='commenter'>{comment.userId}</h3>
             </div>
         )}
         <div>
