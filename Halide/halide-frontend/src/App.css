@@ -23,6 +23,8 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: rgba(255,255,255,.10);
+  border-radius: 20px;
 }
 
 button {
@@ -33,6 +35,49 @@ button {
   font-kerning: auto;
 }
 
+.signUp {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewSubmit {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,.10);
+  border-radius: 25px;
+}
+
+.filmTitle {
+  background-color: rgba(41, 128, 128, 0.5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.filmRating {
+  background-color: rgba(45, 83, 83, 0.5);
+  border-radius: 25px;
+  color: rgb(224, 219, 247);
+  padding: 5px;
+}
+
+.submitComment {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewBody {
+  size: 200px;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+Link {
+  text-decoration: none;
+}
+
 .navbarButton {
   border-radius: 5px;
   border: none;
@@ -40,12 +85,13 @@ button {
   font: 'Roboto';
   margin: 15px;
   padding: 10px;
+  text-decoration: none;
 }
 
 img {
-  width: 250px;
-  height: 250px;
-  border-radius: 45px;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
 
 .filmRating {
@@ -53,13 +99,14 @@ img {
 }
 
 form {
-  background-color: rgb(41, 128, 128);
+  background-color: rgba(41, 128, 128, 0.5);
   margin: 25px;
   padding: 25px;
+  border-radius: 25px;
 }
 
 .reviews {
-  background-color:  rgb(147, 239, 239);
+  background-color:  rgba(147, 239, 239,0.5);
   border-radius: 25px;
   padding: 20px;
   margin: 10px;
@@ -70,6 +117,19 @@ form {
   padding: 50px;
   background-color: rgb(147, 239, 239);
   border-radius: 15px;
+}
+
+.fullReviewComment {
+  background-color: rgba(147, 239, 239,0.5);
+  border-radius: 25px;
+}
+
+.commentDate {
+  font-size: x-small;
+}
+
+.commenter {
+  font-size: small;
 }
 
 .titleAndRating {
@@ -91,65 +151,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 }
-/*
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signIn {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-.filmTitle {
-  display: flex;
-  align-items: left;
-}
-
-.filmRating {
-  display: flex;
-  flex: 1;
-  justify-content: right;
-}
-
-.userProfile {
-  display: flex;
-  flex: 1;
-  align-items: left;
-  font-size: small;
-  margin: none;
-}
-
-.profilePic {
-  transform: scale(.1,.1);
-  margin: none;
-  padding: none;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  margin: 15px;
-}
-
-.navbarButton {
-  padding: 15px;
-}
-
-.yourReviews {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  flex: 1;
-} */

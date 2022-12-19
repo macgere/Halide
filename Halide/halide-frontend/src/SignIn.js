@@ -38,10 +38,12 @@ const inputPassword = (event) => {
          <h1>Sign In Below!</h1>
          <form>
              <label>
-                 Email:
-                 <input type="text" name="email" value={inputUserEmail} onChange={inputEmail} />
-                 Password:
-                 <input type="text" name="password" value={inputUserPassword} onChange={inputPassword} />
+                 <div className='signIn'>
+                     Email:
+                     <input type="text" name="email" value={inputUserEmail} onChange={inputEmail} />
+                     Password:
+                     <input type="password" name="password" value={inputUserPassword} onChange={inputPassword} />
+                 </div>
              </label>
              <button className='submit' text='Submit' onClick={(event) => GetUserBySignIn(event)}>Submit</button>
          </form>

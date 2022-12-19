@@ -7,10 +7,11 @@ import {
 import SubmitReview from './SubmitReview';
 import './App.css';
 
-function UserProfile({userId}) {
+function UserProfile({userId, setReviewBeingRead}) {
     const [user, setUser] = useState({})
     const [reviews, setReviews] = useState([])
     console.log(user)
+    const navigate = useNavigate()
 
     const getReviewsByUserId = (userId) => {
         fetch(`https://localhost:7245/api/User/reviewsBy/${userId}`)
@@ -30,6 +31,10 @@ const deleteReview = (id) => {
         .then(() => getReviews());
 }
 
+const navigateToReview = (id) => {
+    navigate('/review/')
+    setReviewBeingRead(id)
+}
 
     return (
         <div className="userProfile">
@@ -51,8 +56,8 @@ const deleteReview = (id) => {
                                 <h1 className='filmTitle'>{review.filmTitle}</h1>
                                 <h1 className='filmRating'>{review.filmRating}</h1>
                             </div>
-                            <p className='reviewBody'>{review.reviewBody}</p>
                             <p className='dateTime'>{review.dateTime}</p>
+                            <button className='navbarButton' onClick={() => navigateToReview(review.id)}>Full Review</button>
                             <button className='navbarButton' onClick={() => deleteReview(review.id)}>Delete Your Review</button>
                         </div>
                     )}

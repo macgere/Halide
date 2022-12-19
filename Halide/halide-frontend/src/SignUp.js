@@ -47,18 +47,22 @@ const SignUp = () => {
 
 return (
     <>
-    <h1>Sign In Below!</h1>
-    <form>
-        <label>
-            Name:
-            <input type="text" name="email" value={inputUserName} onChange={inputName} />
-            Email:
-            <input type="text" name="email" value={inputUserEmail} onChange={inputEmail} />
-            Choose Password:
-            <input type="text" name="password" value={inputUserPassword} onChange={inputPassword} />
-        </label>
-        <button className='submit' text='Submit' onClick={() => submitNewUser()}>Submit</button>
-    </form>
+
+        <h1>Sign In Below!</h1>
+
+        <form>
+            <label>
+                <div className='signUp'>
+                    <h3>Name</h3>
+                    <input type="text" name="email" value={inputUserName} onChange={inputName} />
+                    <h3>Email</h3>
+                    <input type="text" name="email" value={inputUserEmail} onChange={inputEmail} />
+                    <h3>Choose A Password</h3>
+                    <input type="password" name="password" value={inputUserPassword} onChange={inputPassword} />
+                </div>
+            </label>
+            <button className='submit' text='Submit' onClick={() => submitNewUser()}>Submit</button>
+        </form>
     </>
 )
 }

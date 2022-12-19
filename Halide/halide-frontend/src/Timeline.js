@@ -17,6 +17,14 @@ function Timeline({ userId, setReviewBeingRead }) {
     const [reviews, setReviews] = useState([])
     const [user, setUser] = useState({})
 
+    const noUserRedirect = () => {
+        if (userId == 0) {
+            navigate('/')
+        }
+    }
+
+    noUserRedirect()
+
     const getReviews = () => {
         fetch('https://localhost:7245/api/Review')
             .then((response) => response.json())
@@ -49,9 +57,8 @@ function Timeline({ userId, setReviewBeingRead }) {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Halide</h1>
                 <div className="timelineUser">
-                    <p>{user.name}</p>
+                    <h3>{user.name}</h3>
                     <img className='profilePic' src={user.imageUrl} />
                 </div>
                 <div className='reviewSubmit'>
@@ -66,7 +73,7 @@ function Timeline({ userId, setReviewBeingRead }) {
                                 <h1 className='filmRating'>{review.filmRating}</h1>
                             </div>
                             <p className='dateTime'>{review.dateTime}</p>
-                            <button className='navbarButton' onClick={() => navigateToReview(review.id)}>See Full Review</button>
+                            <button className='navbarButton' onClick={() => navigateToReview(review.id)}>Full Review</button>
                             {optionalDeleteButton(review.userId, review.id)}
                         </div>
                     </div>

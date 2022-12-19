@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import './App.css';
+import Comment from './Comment';
 
 const Review = ({reviewBeingRead}) => {
 
@@ -57,7 +52,6 @@ const Review = ({reviewBeingRead}) => {
               })
             }
             fetch('https://localhost:7245/api/Comment', requestOptions)
-              .then(response => response.json())
               .then(() => getComments())
           }
 
@@ -73,16 +67,9 @@ return (
             <p>{author.name}</p>
     </div>
     <div className='fullReviewComments'>
-        {comments.map((comment) =>
-            <div key={comment.id}>
-                <h2 className='commentBody'>{comment.commentBody}</h2>
-                <h3 className='commentDate'>{comment.dateTime}</h3>
-                <h3 className='commenter'>{comment.userId}</h3>
-            </div>
-        )}
-        <div>
-            <h4>Post A Comment:</h4>
-            <input type="text" onChange={(e) => setNewCommentBody(e.target.value)}/> 
+        {comments.map(comment => <Comment reviewBeingRead={reviewBeingRead} comment={comment} setComments={setComments}/>)}
+        <div className='submitComment'>
+            <textarea type="text" placeholder='Post a comment' onChange={(e) => setNewCommentBody(e.target.value)}/> 
             <button onClick={() => submitComment()}>Send</button>
         </div>
     </div>

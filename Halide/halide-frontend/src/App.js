@@ -22,12 +22,15 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Router>
+        <div>
+          <h1>Halide.</h1>
+        </div>
         <Navbar userId={userId} setUserId={setUserId} />
           <Routes>
             <Route path="/" element={<SignIn setUserId={setUserId} />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route exact path="/home" element={<Timeline userId={userId} setReviewBeingRead={setReviewBeingRead}/>} />
-            <Route path="/userProfile" element={<UserProfile userId={userId} />} />
+            <Route path="/userProfile" element={<UserProfile userId={userId} setReviewBeingRead={setReviewBeingRead}/>} />
             <Route path="/review" element={<Review reviewBeingRead={reviewBeingRead} userId={userId}/>} />
           </Routes>
         </Router>

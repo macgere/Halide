@@ -33,29 +33,29 @@ const SubmitReview = ({userId, getReviews}) => {
     }
 
     fetch(`https://localhost:7245/api/Review/newReview/`, requestOptions)
-      .then(response => response.json())
-      .then(getReviews())
+      // .then(response => response.json())
+      .then(() => getReviews())
   }
 
   return (
+    <>
     <div className='reviewSubmit'>
-      <h2>Submit a New Review:</h2>
       <ul>
+        <div className='titleAndRating'>
+          <li>
+            <input type="text" placeholder='Film Title' onChange={(event) => setNewReviewTitle(event.target.value)} />
+          </li>
+          <li>
+            <input type="number" placeholder='?/10' min="1" max="10" onChange={(event) => setNewReviewRating(event.target.value)} />
+          </li>
+        </div>
         <li>
-          <p>Film Title</p>
-          <input type="text" onChange={(event) => setNewReviewTitle(event.target.value)} />
-        </li>
-        <li>
-          <p>Film Rating</p>
-          <input type="number" min="1" max="10" onChange={(event) => setNewReviewRating(event.target.value)} />
-        </li>
-        <li>
-          <p>Your Review</p>
-          <input className='reviewBody' type="text" onChange={(e) => setNewReviewBody(e.target.value)} />
+          <textarea className='reviewBody' placeholder='The viewing public awaits your critique' type="text" onChange={(e) => setNewReviewBody(e.target.value)} />
         </li>
       </ul>
-      <button onClick={(e) => submitNewReview(e)}>SubmitReview</button>
     </div>
+    <button onClick={(e) => submitNewReview(e)}>SubmitReview</button>
+    </>
       )
 }
 
