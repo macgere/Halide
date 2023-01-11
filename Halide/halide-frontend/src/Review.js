@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Comment from './Comment';
 
-const Review = ({reviewBeingRead}) => {
+const Review = ({reviewBeingRead, userId}) => {
 
     const [fullReview, setFullReview] = useState({});
     const [author, setAuthor] = useState({});
     const [comments, setComments] = useState([])
     const [newCommentBody, setNewCommentBody] = useState('')
 
-    let userId = fullReview.userId
+    let authorId = fullReview.userId
     console.log('the User Id is ' + userId)
 
     useEffect( () => {
@@ -28,7 +28,7 @@ const Review = ({reviewBeingRead}) => {
     }
 
     const reviewAuthor = async() => {
-        await  fetch(`https://localhost:7245/api/User/${userId}`)
+        await  fetch(`https://localhost:7245/api/User/${authorId}`)
         .then((response) => (response.json()))
         .then((response) => setAuthor(response))
     }
@@ -69,7 +69,7 @@ return (
     <div className='fullReviewComments'>
         {comments.map(comment => <Comment reviewBeingRead={reviewBeingRead} comment={comment} setComments={setComments}/>)}
         <div className='submitComment'>
-            <textarea type="text" placeholder='Post a comment' onChange={(e) => setNewCommentBody(e.target.value)}/> 
+            <textarea type="text" className='inputComment' placeholder='Post a comment' onChange={(e) => setNewCommentBody(e.target.value)}/> 
             <button onClick={() => submitComment()}>Send</button>
         </div>
     </div>

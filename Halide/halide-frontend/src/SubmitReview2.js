@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
-const SubmitReview = ({userId, getReviews}) => {
+const SubmitReview = ({userId, getReviewsByUserId}) => {
    const [newReviewTitle, setNewReviewTitle] = useState('')
    const [newReviewRating, setNewReviewRating] = useState(0)
    const [newReviewBody, setNewReviewBody] = useState('')
@@ -36,7 +36,7 @@ const SubmitReview = ({userId, getReviews}) => {
 
     fetch(`https://localhost:7245/api/Review/newReview/`, requestOptions)
       // .then(response => response.json())
-      .then(() => getReviews())
+      .then(() => getReviewsByUserId(userId))
   }
 
   return (

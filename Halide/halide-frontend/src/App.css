@@ -61,9 +61,8 @@ button {
   padding: 5px;
 }
 
-.submitComment {
-  display: flex;
-  flex-direction: column;
+.inputComment {
+  justify-content: center;
 }
 
 .reviewBody {
@@ -122,6 +121,21 @@ form {
 .fullReviewComment {
   background-color: rgba(147, 239, 239,0.5);
   border-radius: 25px;
+  margin: 5px;
+}
+
+.fullReviewComments {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ flex: 1;
+ margin: 5px;
+}
+
+.submitComment {
+  display: flex;
+  flex-direction: column;
 }
 
 .commentDate {

@@ -9,8 +9,8 @@ const Comment = ({comment}) => {
         getCommentAuthor(userId)
     }, [])
 
-    const getCommentAuthor = (userId) => {
-          fetch(`https://localhost:7245/api/User/${userId}`)
+    const getCommentAuthor = (id) => {
+          fetch(`https://localhost:7245/api/User/${id}`)
             .then((response) => (response.json()))
             .then((response) => setCommentAuthor(response))
         }
@@ -20,7 +20,7 @@ return (
     <div className='fullReviewComment'>
             <div key={comment.id}>
                 <h3 className='commenter'>{commentAuthor.name}</h3>
-                <h2 className='commentBody'>{comment.commentBody}</h2>
+                <p className='commentBody'>{comment.commentBody}</p>
                 <h3 className='commentDate'>{comment.dateTime}</h3>
             </div>
     </div>

@@ -53,12 +53,9 @@ return (
         <form>
             <label>
                 <div className='signUp'>
-                    <h3>Name</h3>
-                    <input type="text" name="email" value={inputUserName} onChange={inputName} />
-                    <h3>Email</h3>
-                    <input type="text" name="email" value={inputUserEmail} onChange={inputEmail} />
-                    <h3>Choose A Password</h3>
-                    <input type="password" name="password" value={inputUserPassword} onChange={inputPassword} />
+                    <input type="text" placeholder='Name' name="email" value={inputUserName} onChange={inputName} />
+                    <input type="text" placeholder='Email' name="email" value={inputUserEmail} onChange={inputEmail} />
+                    <input type="password" placeholder='Choose A Password' name="password" value={inputUserPassword} onChange={inputPassword} />
                 </div>
             </label>
             <button className='submit' text='Submit' onClick={() => submitNewUser()}>Submit</button>
